@@ -1,4 +1,12 @@
 {% extends 'base.html' %}
 {% block content %}
-    <a href="#" class="btn btn-success">Add Todo</a>
+    <form method="post" action="/addtask/">
+        {% csrf_token %}
+        <input type="text" name="task">
+        <input type="submit" value="add" class="btn btn-success" name="">
+    </form>
+
+    {% for my_todo in my_todos %}
+    <p> id: {{my_todo.id}} todo: {{my_todo.task}}</p>
+    {% endfor %}
 {% endblock %}
