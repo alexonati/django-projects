@@ -9,4 +9,4 @@ def helloworld(request):
 
 
 def hellostudent(request):
-    return render(request, "helloworld/hellostudent.html",)
+    return render(request, "helloworld/hellostudent.html")
