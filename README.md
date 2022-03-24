@@ -3,6 +3,8 @@
 - Hello World
 - Counter app
 
+![ Alt text](counter.gif)
+
 - Todo app
 
 ![ Alt text](todo.gif)
