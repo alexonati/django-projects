@@ -1,12 +1,20 @@
 {% extends 'base.html' %}
 {% block content %}
+<h3>These are your tasks for today:</h3>
     <form method="post" action="/addtask/">
         {% csrf_token %}
         <input type="text" name="task">
         <input type="submit" value="add" class="btn btn-success" name="">
     </form>
-
-    {% for my_todo in my_todos %}
-    <p> id: {{my_todo.id}} todo: {{my_todo.task}}</p>
+    <table class="table">
+        {% for my_todo in my_todos %}
+        <tr>
+            <th>
+                task: {{my_todo.task}}
+                <a href="/edittask/{{my_todo.id}}/" class="btn btn-warning">Edit</a>
+                <a href="/deletetask/{{my_todo.id}}/" class="btn btn-danger">Delete</a>
+            </th>
+        </tr>
     {% endfor %}
+    </table>
 {% endblock %}
