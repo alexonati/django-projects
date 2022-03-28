@@ -1,11 +1,37 @@
 {% extends 'base.html' %}
 {% block content %}
 <nav class="navbar navbar-light" style="background-color: #5cb85c;">
-  <div class="container-fluid">
-    <a class="navbar-brand">Welcome Admin</a>
-    <form class="d-flex">
-      <a class="btn btn-primary" style="background-color: #dc3545" type="submit" href="/adminlogout/">Logout</a>
-    </form>
-  </div>
+    <div class="container-fluid">
+        <a class="navbar-brand">Welcome Manager</a>
+        <form class="d-flex">
+            <a class="btn btn-primary" style="background-color: #dc3545" type="submit" href="/adminlogout/">Logout</a>
+        </form>
+    </div>
 </nav>
+
+<form method="post" action="/addpizza/">
+    {% csrf_token %}
+    <div class="container"
+         style="display: block; margin: auto; margin-left: 60px; margin-top: 100px; width: auto; align: center">
+        <input type="text" class="form-control" placeholder="name...." name="pizza"
+               style="width: 200px; display: inline; margin: auto; margin-right: 20px">
+        <input type="text" class="form-control" placeholder="price...." name="price"
+               style="width: 200px; display: inline; margin: auto">
+        <input type="submit" class="btn btn-success" value="add" name="" style="display: inline; margin-left: 30px;">
+    </div>
+</form>
+
+<table style="width: 50%; margin-top: 80px; margin-left: 75px">
+    <tr">
+        <th style="font-size: 130%">Pizza Name</th>
+        <th style="font-size: 130% ">Price</th>
+    </tr>
+    {% for pizza in pizzas %}
+    <tr>
+        <td>{{pizza.name}}</td>
+        <td>{{pizza.price}}</td>
+        <td><a href="/deletepizza/{{pizza.id}}" class="btn btn-danger">Remove</a></td>
+    </tr>
+    {% endfor %}
+</table>
 {% endblock %}
