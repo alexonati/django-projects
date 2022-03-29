@@ -10,3 +10,5 @@
 ![ Alt text](todo.gif)
 
 - Pizza Delivery Project
+
+![ Alt text](pizza.gif)
