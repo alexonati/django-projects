@@ -2,10 +2,44 @@
 {% block content %}
 <nav class="navbar navbar-light" style="background-color: #5cb85c;">
     <div class="container-fluid">
-        <a class="navbar-brand">Welcome User</a>
+        <a class="navbar-brand">Welcome {{username}}</a>
+        <a class="btn btn-primary" style="text-decoration: none; color: white; background-color: #dc3545;" href="/userorders/">My Orders</a>
         <form class="d-flex">
-            <a class="btn btn-primary" style="background-color: #dc3545" type="submit" href="#">Logout</a>
+            <a class="btn btn-primary" href="/userlogout/" style="background-color: #dc3545" type="submit">Logout</a>
         </form>
     </div>
 </nav>
+{% for message in messages %}
+<p style="color: green; text-align: center">{{message}}</p>
+{% endfor %}
+<form method="POST" action="/placeorder/">
+        {% csrf_token %}
+    <div class="container-fluid" style="margin: auto; width: 800px;">
+        <table style="width: 50%; margin-top: 80px; margin-left: 75px">
+            <tr>
+                <th style="font-size: 130%">Pizza Name</th>
+                <th style="font-size: 130% ">Price</th>
+            </tr>
+            {% for pizza in pizzas %}
+            <tr>
+                <td>{{pizza.name}}</td>
+                <td>{{pizza.price}}</td>
+                <td><input style="width: 70px;" type="number" value="0" min="0" name="{{pizza.id}}"></td>
+            </tr>
+            {% endfor %}
+        </table>
+
+        <div class="container" style="margin-top: 50px;">
+            <div class="row">
+                <div class="col-sm-8">
+                    <input name="address" placeholder="Please type the delivery address..." style="width: 500px;"
+                           type="text">
+                </div>
+                <div class="col-6 col-md-4">
+                    <input type="submit" class="btn btn-success" value="place order">
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
 {% endblock %}

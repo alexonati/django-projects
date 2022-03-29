@@ -2,7 +2,10 @@
 {% block content %}
 <nav class="navbar navbar-light" style="background-color: #5cb85c;">
     <div class="container-fluid">
-        <a class="navbar-brand">Welcome Manager</a>
+        <a class="navbar-brand">Welcome {{username}}</a>
+         <form class="d-flex">
+            <a class="btn btn-primary" style="background-color: #dc3545" type="submit" href="/allorders/">All orders</a>
+        </form>
         <form class="d-flex">
             <a class="btn btn-primary" style="background-color: #dc3545" type="submit" href="/adminlogout/">Logout</a>
         </form>
@@ -22,7 +25,7 @@
 </form>
 
 <table style="width: 50%; margin-top: 80px; margin-left: 75px">
-    <tr">
+    <tr>
         <th style="font-size: 130%">Pizza Name</th>
         <th style="font-size: 130% ">Price</th>
     </tr>

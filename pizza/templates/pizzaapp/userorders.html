@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+<nav class="navbar navbar-light" style="background-color: #5cb85c;">
+    <div class="container-fluid">
+        <a class="navbar-brand">Welcome {{username}}</a>
+        <form class="d-flex">
+            <a class="btn btn-primary" href="/customer/" style="background-color: #dc3545" type="submit">Order Page</a>
+        </form>
+        <form class="d-flex">
+            <a class="btn btn-primary" href="/userlogout/" style="background-color: #dc3545" type="submit">Logout</a>
+        </form>
+    </div>
+</nav>
+<h1 style="text-align: center; margin-top: 50px;">My Orders</h1>
+{% for order in orders %}
+<div class=" alert alert-warning" role="alert" style="margin: 50px;">
+    <p>{{order.username}}</p>
+    <p>{{order.address}}</p>
+    <p>{{order.ordereditems}}</p>
+    <p>order status: {{order.status}}</p>
+</div>
+{% endfor %}
+{% endblock %}
